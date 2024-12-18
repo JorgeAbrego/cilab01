@@ -14,3 +14,8 @@ async def about():
             "author":"Jorge Abrego",
             "message":"Jorge loves Agupon <3"
             }
+    
+
+@app.get("/greet/{name}") 
+def greet(name: str): 
+    return {"message":f"Hello {name}"}
