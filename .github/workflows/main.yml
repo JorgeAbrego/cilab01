@@ -19,8 +19,10 @@ jobs:
     - name: Log in to Docker Hub
       run: echo "${{ secrets.Docker_Token }}" | docker login -u "${{ secrets.Docker_Username }}" --password-stdin
 
-    - name: Build Docker image
-      run: docker build -t jorgeabrego/my-fastapi-app:latest .
-
-    - name: Push Docker image to Docker Hub
-      run: docker push jorgeabrego/my-fastapi-app:latest
+    - name: Build and push Docker image (multi-arch)
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        platforms: linux/amd64,linux/arm64
+        push: true
+        tags: jorgeabrego/my-fastapi-app:latest
