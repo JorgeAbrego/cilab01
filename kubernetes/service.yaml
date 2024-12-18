@@ -4,9 +4,10 @@ metadata:
   name: fastapi-service
   namespace: apitest
 spec:
-  type: LoadBalancer
+  type: NodePort
   ports:
     - port: 80
       targetPort: 8000
+      nodePort: 30080
   selector:
     app: fastapi-app
