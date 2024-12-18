@@ -19,7 +19,7 @@ jobs:
     - name: Log in to Docker Hub
       run: echo "${{ secrets.Docker_Token }}" | docker login -u "${{ secrets.Docker_Username }}" --password-stdin
 
-    - name: Build and push Docker image (multi-arch)
+    - name: Build and push Docker image (multi-archs)
       uses: docker/build-push-action@v5
       with:
         context: .
